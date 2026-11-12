@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{65CD1B31-6F72-46C0-8DC9-63009D5649B2}</ProjectGuid><Keyword>Win32Proj</Keyword><RootNamespace>FlowingHair</RootNamespace></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v100</PlatformToolset><CharacterSet>Unicode</CharacterSet><WholeProgramOptimization>true</WholeProgramOptimization></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)</OutDir><IntDir>$(SolutionDir)build\obj\plugin\</IntDir><TargetName>FlowingHair</TargetName>
+    <GenerateManifest>false</GenerateManifest>
+    <WindowsSdkDir>C:\Program Files\Microsoft SDKs\Windows\v7.1\</WindowsSdkDir><WindowsSDKDir>$(WindowsSdkDir)</WindowsSDKDir>
+    <IncludePath>$(ProjectDir);$(KENSHILIB_DIR)\Include;$(KENSHILIB_DIR)\Include\ogre;$(BOOST_INCLUDE_PATH);$(WindowsSdkDir)Include;$(VCInstallDir)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(KENSHILIB_DIR)\Libraries;$(WindowsSdkDir)Lib\x64;$(VCInstallDir)lib\amd64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(FlowingHairStage)'=='true'">
+    <OutDir>$(SolutionDir)build\staged\</OutDir><IntDir>$(SolutionDir)build\obj\staged\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile><WarningLevel>Level4</WarningLevel><DisableSpecificWarnings>4091;4127;4324;4481;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings><PreprocessorDefinitions>NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;BOOST_ALL_NO_LIB;BOOST_ERROR_CODE_HEADER_ONLY;BOOST_SYSTEM_NO_DEPRECATED;%(PreprocessorDefinitions)</PreprocessorDefinitions><RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary><ExceptionHandling>Sync</ExceptionHandling></ClCompile>
+    <Link><SubSystem>Windows</SubSystem><GenerateDebugInformation>true</GenerateDebugInformation><GenerateManifest>false</GenerateManifest><AdditionalDependencies>KenshiLib.lib;OgreMain_x64.lib;MyGUIEngine_x64.lib;%(AdditionalDependencies)</AdditionalDependencies></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="ClothSolver.cpp" /><ClCompile Include="Plugin.cpp" /><ClCompile Include="WindField.cpp" /><ClCompile Include="NativeWeather.cpp" /><ClCompile Include="IntegratedWind.cpp" /></ItemGroup>
+  <ItemGroup><ClInclude Include="ClothSolver.h" /><ClInclude Include="WindField.h" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
